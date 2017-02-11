@@ -1,10 +1,10 @@
 {
-  "name": "MOOC-game",
+  "name": "Bubbles-Annihilator",
   "version": "1.1.0",
-  "description": "Juego demostracion de las capacidades del acelerometro",
+  "description": "Una nave tendrá que disparar a las burbujas que van apareciendo.",
   "repository": {
     "type": "git",
-    "url": "git+https:////github.com/devscola/MOOC-game.git"
+    "url": "git+https://github.com/alexwing/Bubbles-Annihilator.git"
   },
   "keywords": [
     "ecosystem:phonegap",
