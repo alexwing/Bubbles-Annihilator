@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.phonegap.alexwing" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Bubbles Annihilator</name>
+    <description>
+        Bubbles Annihilator Game.
+    </description>
+    <author email="alejandro@aaranda.es" href="http://www.aaranda.es">
+        Alejandro Aranda
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>
