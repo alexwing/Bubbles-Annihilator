@@ -9,7 +9,7 @@ var SimpleGame = (function () {
         this.game.load.image('ball2', 'res/bubble2.png');
         this.game.load.image('background', 'res/space_background.png');
         this.game.load.image('player', 'res/nave_small.png');
-        this.game.load.image('bola', 'res/deathstar.png');
+        this.game.load.image('bola', 'res/deathstar.PNG');
         this.game.load.spritesheet('kaboom', 'res/explode_small.png', 128, 128);
         this.game.load.spritesheet('bullet', 'res/FireBall_small.png', 32, 37);
         this.game.load.spritesheet('button', 'res/arcade_small.png', 125, 125);
