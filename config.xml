@@ -9,4 +9,6 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+<plugin name="cordova-plugin-device-motion" spec="~1.2.3" />
+<plugin name="cordova-plugin-device-orientation" spec="~1.0.5" />
 </widget>
