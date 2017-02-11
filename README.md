@@ -1,4 +1,5 @@
-# Juego de prueba, una nave tendrá que disparar a las burbujas que van apareciendo.
+#Bubbles-Annihilator
+### Juego de prueba, una nave tendrá que disparar a las burbujas que van apareciendo.
 
 ##Features
 Multitouch controls, cursos and XBOX controller
