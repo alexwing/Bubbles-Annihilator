@@ -1,6 +1,11 @@
-# Juego demostracion de las capacidades del acelerometro
+# Juego de prueba, una nave tendrá que disparar a las burbujas que van apareciendo.
 
-## Usage
+##features
+Multitouch controls, cursos and XBOX controller
+
+## Mobile
+
+Get the PhoneGap Desktop
 
 ### Desktop
 
