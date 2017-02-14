@@ -8,7 +8,10 @@
     },
     "installed_plugins": {
         "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+            "PACKAGE_NAME": "com.phonegap.alexwing"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.phonegap.alexwing"
         }
     },
     "dependent_plugins": {}
