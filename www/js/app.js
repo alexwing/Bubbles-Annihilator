@@ -4,20 +4,8 @@ var SimpleGame = (function () {
         this.game = new Phaser.Game("100%", "100%", Phaser.AUTO, 'content', { preload: this.preload, create: this.create, update: this.update, render: this.render });
     }
     SimpleGame.prototype.preload = function () {
-        //cargamos los assets
-        this.game.load.image('ball', 'res/bubble256.png');
-        this.game.load.image('ball2', 'res/bubble2.png');
-        this.game.load.image('background', 'res/space_background.png');
-        this.game.load.image('player', 'res/nave_small.png');
-        this.game.load.image('bola', 'res/deathstar.PNG');
-        this.game.load.spritesheet('kaboom', 'res/explode_small.png', 128, 128);
-        this.game.load.spritesheet('bullet', 'res/FireBall_small.png', 32, 37);
-        this.game.load.spritesheet('button', 'res/arcade_small.png', 125, 125);
-        this.game.load.image('smoke', 'res/smoke.png');
-        this.game.load.image('compass', 'res/compass_rose.png');
-        this.game.load.image('touch', 'res/touch.png');
-        this.game.load.image('touch_segment', 'res/touch_segment.png');
-        this.game.load.start();
+        //cargamos los assets desde el fichero de precargas
+        parent.pregarga.fase(this.game);
     };
     SimpleGame.prototype.create = function () {
         // fireButton = true;
@@ -417,7 +405,7 @@ function collisionHandler(fire, ball ) {
 }
 
 function bolacollisionHandler(ball, fire) {
-    hits++;
+   // hits++;
     phaser.explosionCreate(ball.body.x + (ball.body.width / 2), ball.body.y + (ball.body.height / 2), ball.scale.x);
     //  And create an explosion :)
     //phaser.game.debug.text(ball.name + " collition " + hits, 32, 62);
@@ -425,7 +413,7 @@ function bolacollisionHandler(ball, fire) {
     //ball.kill();
     //createText(ball.name + " Balls destroyed: " + hits);
     //createText("Balls destroyed: " + hits + "/" + ball.parent.total);
-    evalueLevel();
+   // evalueLevel();
 }
 function evalueLevel() {
     createText("Balls destroyed: " + hits + "/" + nEnemies);
