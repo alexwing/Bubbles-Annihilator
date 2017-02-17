@@ -1,5 +1,5 @@
-var pregarga={
-  fase: function(game){
+var preloadClass={
+  level: function(game){
         //cargamos los assets
        game.load.image('ball', 'res/bubble256.png');
        game.load.image('ball2', 'res/bubble2.png');

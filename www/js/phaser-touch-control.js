@@ -62,9 +62,10 @@
 
 	Phaser.Plugin.TouchControl.prototype.settings = {
 		// max distance from initial touch or fixed position
-		maxDistanceInPixels: 200,
+		maxDistanceInPixels: 50,
 		singleDirection: false,
-		numberOfSegments: 2
+		numberOfSegments: 2,
+                maxVelocity: 20
 	};
 
 	Phaser.Plugin.TouchControl.prototype.init = function(baseImage, touchImage, segmentImage) {
@@ -206,6 +207,7 @@
 	var setDirection = function() {
 		var d = initialPoint.distance(this.pointer.position);
 		var maxDistanceInPixels = this.settings.maxDistanceInPixels;
+                var maxVelocity = this.settings.maxVelocity;
 
 		var deltaX = this.pointer.position.x - initialPoint.x;
 		var deltaY = this.pointer.position.y - initialPoint.y;
@@ -227,8 +229,8 @@
 			}
 		}
 
-		this.speed.x = parseInt((deltaX / maxDistanceInPixels) * 100 * -1, 10);
-		this.speed.y = parseInt((deltaY / maxDistanceInPixels) * 100 * -1, 10);
+		this.speed.x = parseInt((deltaX / maxDistanceInPixels) * maxVelocity * -1, 10);
+		this.speed.y = parseInt((deltaY / maxDistanceInPixels) * maxVelocity * -1, 10);
 		this.body.rotation = getAngle(this.speed.x, this.speed.y)
 		
 		this.cursors.up = (deltaY < 0);
