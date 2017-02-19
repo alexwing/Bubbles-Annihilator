@@ -259,9 +259,6 @@ var phaser;
 var hits = 0;
 
 
-var text = null;
-var liveText = null;
-
 var xpos = 1;
 var ypos = 1;
 var player;
