@@ -1,3 +1,5 @@
+
+
 function createLiveText(content) {
     if (parent.liveText) {
         parent.liveText.kill();
