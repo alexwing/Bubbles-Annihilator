@@ -169,21 +169,21 @@ var SimpleGame = (function () {
                 this.game.paused = true;
             }
         }
-        if (this.fire.isDown || this.game.input.gamepad.isDown(Phaser.Gamepad.XBOX360_A) || fireButton) {
+        if (this.fire.isDown || this.game.input.gamepad.isDown(parent.Phaser.Gamepad.XBOX360_A) || fireButton) {
             //calcula la secuencia de disparo
             if (this.game.time.now > nextFire) {
                 nextFire = this.game.time.now + fireRate;
                 //fireButton = false;
                 var bulletAnimations = this.game.add.group();
-                bulletAnimations.createMultiple(1, 'bullet');
+                bulletAnimations.createMultiple(2, 'bullet');
                 bulletAnimations.forEach(setupBullet, this);
                 var bullet = bulletAnimations.getFirstExists(false);
                 bullet.reset(player.x, player.y);
-                bullet.anchor.x = 0.5;
-                bullet.anchor.y = 0.5;
-                this.game.physics.enable(bullet, Phaser.Physics.ARCADE);
+                bullet.anchor.x = 0.8;
+                bullet.anchor.y = 1.4;
+                this.game.physics.enable(bullet, parent.Phaser.Physics.ARCADE);
                 //bullet.body.checkCollision = true;
-                bullet.play('bullet', 30, true, false);
+              //  bullet.play('bullet', 24, true, false);
                 bullet.lifespan = 1500;
                 //bullet.scale.setTo(0.5, 0.5);
                 bullet.rotation = player.rotation;
@@ -192,6 +192,24 @@ var SimpleGame = (function () {
                 //bullet.body.moveForward(shootVelocity);
                 //bullet.body.angularVelocity = shootVelocity;
                 //bullet.body.velocity = shootVelocity;
+                
+                 var bullet = bulletAnimations.getFirstExists(false);
+                 
+                bullet.reset(player.x, player.y);
+                bullet.anchor.x =0.2;
+                bullet.anchor.y =1.4;
+                this.game.physics.enable(bullet, parent.Phaser.Physics.ARCADE);
+                //bullet.body.checkCollision = true;
+               // bullet.play('bullet', 24, true, false);
+                bullet.lifespan = 1500;
+                //bullet.scale.setTo(0.5, 0.5);
+                bullet.rotation = player.rotation;
+                bullet.rotation = player.rotation;
+                this.game.physics.arcade.velocityFromAngle(bullet.angle - 90, shootVelocity  , bullet.body.velocity);
+                //bullet.body.moveForward(shootVelocity);
+                //bullet.body.angularVelocity = shootVelocity;
+                //bullet.body.velocity = shootVelocity;                 
+                 
                 this.bullets.add(bullet);
             }
             //detecta cuando un disparo da en un enemigo
@@ -227,9 +245,9 @@ var SimpleGame = (function () {
         explosion.scale.x = explosion.scale.y = scale * 2;
         explosion.anchor.x = 0.5;
         explosion.anchor.y = 0.5;
-        // explosion.alpha = 0.5;
-        explosion.play('kaboom', 60, false, true);
-        explosion.lifespan = 1000;
+        explosion.alpha = 0.8;
+        explosion.play('kaboom', 25, false, true);
+        explosion.lifespan = 2000;
     };
     return SimpleGame;
 }());

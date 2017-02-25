@@ -7,7 +7,7 @@ var preloadClass={
        game.load.image('player', 'res/nave_small.png');
        game.load.image('bola', 'res/deathstar.PNG');
        game.load.spritesheet('kaboom', 'res/explode_small.png', 128, 128);
-       game.load.spritesheet('bullet', 'res/FireBall_small.png', 32, 37);
+       game.load.spritesheet('bullet', 'res/FireBall_small.png', 28, 33);
        game.load.spritesheet('button', 'res/arcade_small.png', 125, 125);
        game.load.image('smoke', 'res/smoke.png');
        game.load.image('compass', 'res/compass_rose.png');
