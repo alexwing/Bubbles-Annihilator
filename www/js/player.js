@@ -30,3 +30,22 @@ function playerDeath(player, bubble) {
     tween.repeat(10, 100);
     evalueLevel();
 }
+
+var easeInSpeed = function (x) {
+    return x - x / 6;
+};
+//player fire button
+function down() {
+   // fireButton = !fireButton;
+     fireButton = true;
+
+}
+function up() {
+    fireButton = false;
+}
+//screeen firebutton
+function actionOnClick() {
+    //fireButton = !fireButton;
+    //this.game.debug.text("Pulsado", 100, 120);
+     //fireButton = true;
+}

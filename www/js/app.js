@@ -53,6 +53,10 @@ var SimpleGame = (function () {
         updateLives();
         button = this.game.add.button(this.game.width - 150, this.game.height - 150, 'button', actionOnClick, this, 0, 0, 1);
         button.fixedToCamera = true;
+      
+    button.onInputDown.add(down, this);
+    button.onInputUp.add(up, this);
+
 
         // this.game.stage.backgroundColor = '#182d3b';
 
@@ -169,7 +173,7 @@ var SimpleGame = (function () {
             //calcula la secuencia de disparo
             if (this.game.time.now > nextFire) {
                 nextFire = this.game.time.now + fireRate;
-                fireButton = false;
+                //fireButton = false;
                 var bulletAnimations = this.game.add.group();
                 bulletAnimations.createMultiple(3, 'bullet');
                 bulletAnimations.forEach(setupBullet, this);
@@ -283,7 +287,7 @@ var EnemiesMultiplicator = 5;
 //velocidad de la nave
 var velocity = 400;
 //Velocidad de disparo
-var shootVelocity = 1100;
+var shootVelocity = 1500;
 //tasa de disparo
 var fireRate = 75;
 //acumulador del calculo de la tasa de disparo
@@ -291,25 +295,6 @@ var nextFire = 0;
 var balls;
 var button;
 var fireButton = false;
-var easeInSpeed = function (x) {
-    return x - x / 6;
-};
-function up() {
-    fireButton = false;
-}
-function over() {
-}
-function actionOnClick() {
-    fireButton = !fireButton;
-    //this.game.debug.text("Pulsado", 100, 120);
-    // fireButton = true;
-}
-function down() {
-    fireButton = !fireButton;
-}
-function out() {
-    fireButton = false;
-}
 
 
 
