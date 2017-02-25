@@ -175,7 +175,7 @@ var SimpleGame = (function () {
                 nextFire = this.game.time.now + fireRate;
                 //fireButton = false;
                 var bulletAnimations = this.game.add.group();
-                bulletAnimations.createMultiple(3, 'bullet');
+                bulletAnimations.createMultiple(1, 'bullet');
                 bulletAnimations.forEach(setupBullet, this);
                 var bullet = bulletAnimations.getFirstExists(false);
                 bullet.reset(player.x, player.y);
@@ -184,7 +184,7 @@ var SimpleGame = (function () {
                 this.game.physics.enable(bullet, Phaser.Physics.ARCADE);
                 //bullet.body.checkCollision = true;
                 bullet.play('bullet', 30, true, false);
-                bullet.lifespan = 2000;
+                bullet.lifespan = 1500;
                 //bullet.scale.setTo(0.5, 0.5);
                 bullet.rotation = player.rotation;
                 bullet.rotation = player.rotation;
@@ -220,7 +220,7 @@ var SimpleGame = (function () {
         //  An explosion pool
         var explosions;
         explosions = this.game.add.group();
-        explosions.createMultiple(30, 'kaboom');
+        explosions.createMultiple(1, 'kaboom');
         explosions.forEach(setupExplosions, this);
         var explosion = explosions.getFirstExists(false);
         explosion.reset(x, y);
