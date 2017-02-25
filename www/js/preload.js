@@ -1,7 +1,7 @@
 var preloadClass={
   level: function(game){
         //cargamos los assets
-       game.load.image('ball', 'res/bubble256.png');
+       game.load.image('ball', 'res/bubble.png');
        game.load.image('ball2', 'res/bubble2.png');
        game.load.image('background', 'res/space_background.png');
        game.load.image('player', 'res/nave_small.png');

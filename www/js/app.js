@@ -283,7 +283,7 @@ var lives = 5;
 //Numero de enemigos
 var nEnemies = 10;
 //incremento de enemigos por nivel
-var EnemiesMultiplicator = 5;
+var EnemiesMultiplicator = 2;
 //velocidad de la nave
 var velocity = 400;
 //Velocidad de disparo
