@@ -16,3 +16,15 @@ var preloadClass={
        game.load.start();      
   }
 };
+
+function loadStart() {
+    createText("Loading ...");
+}
+//This callback is sent the following parameters:
+function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+    createText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+    //this.phaser.game.text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+}
+function loadComplete() {
+    createText("Load Complete");
+}

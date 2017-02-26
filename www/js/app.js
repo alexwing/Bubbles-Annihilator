@@ -2,12 +2,20 @@ var SimpleGame = (function () {
     function SimpleGame() {
         //creamos el juego ocupando el tamaño que tengamos disponible en el navegador
         this.game = new parent.Phaser.Game("100%", "100%", Phaser.AUTO, 'content', {preload: this.preload, create: this.create, update: this.update, render: this.render});
+
     }
     SimpleGame.prototype.preload = function () {
         //cargamos los assets desde el fichero de precargas
         parent.preloadClass.level(this.game);
+
+        //You can listen for each of these events from Phaser.Loader
+        this.game.load.onLoadStart.add(parent.loadStart, this);
+        this.game.load.onFileComplete.add(parent.fileComplete, this);
+        this.game.load.onLoadComplete.add(parent.loadComplete, this);
     };
     SimpleGame.prototype.create = function () {
+
+
         // fireButton = true;
         this.game.touchControl = this.game.plugins.add(parent.Phaser.Plugin.TouchControl);
         this.game.touchControl.inputEnable();
@@ -53,17 +61,14 @@ var SimpleGame = (function () {
         updateLives();
         button = this.game.add.button(this.game.width - 150, this.game.height - 150, 'button', actionOnClick, this, 0, 0, 1);
         button.fixedToCamera = true;
-      
-    button.onInputDown.add(down, this);
-    button.onInputUp.add(up, this);
+
+        button.onInputDown.add(down, this);
+        button.onInputUp.add(up, this);
 
 
         // this.game.stage.backgroundColor = '#182d3b';
 
-        //You can listen for each of these events from Phaser.Loader
-        this.game.load.onLoadStart.add(loadStart, this);
-        this.game.load.onFileComplete.add(fileComplete, this);
-        this.game.load.onLoadComplete.add(loadComplete, this);
+
     };
     SimpleGame.prototype.update = function () {
 
@@ -183,7 +188,7 @@ var SimpleGame = (function () {
                 bullet.anchor.y = 1.4;
                 this.game.physics.enable(bullet, parent.Phaser.Physics.ARCADE);
                 //bullet.body.checkCollision = true;
-              //  bullet.play('bullet', 24, true, false);
+                //  bullet.play('bullet', 24, true, false);
                 bullet.lifespan = 1500;
                 //bullet.scale.setTo(0.5, 0.5);
                 bullet.rotation = player.rotation;
@@ -192,24 +197,24 @@ var SimpleGame = (function () {
                 //bullet.body.moveForward(shootVelocity);
                 //bullet.body.angularVelocity = shootVelocity;
                 //bullet.body.velocity = shootVelocity;
-                
-                 var bullet = bulletAnimations.getFirstExists(false);
-                 
+
+                var bullet = bulletAnimations.getFirstExists(false);
+
                 bullet.reset(player.x, player.y);
-                bullet.anchor.x =0.2;
-                bullet.anchor.y =1.4;
+                bullet.anchor.x = 0.2;
+                bullet.anchor.y = 1.4;
                 this.game.physics.enable(bullet, parent.Phaser.Physics.ARCADE);
                 //bullet.body.checkCollision = true;
-               // bullet.play('bullet', 24, true, false);
+                // bullet.play('bullet', 24, true, false);
                 bullet.lifespan = 1500;
                 //bullet.scale.setTo(0.5, 0.5);
                 bullet.rotation = player.rotation;
                 bullet.rotation = player.rotation;
-                this.game.physics.arcade.velocityFromAngle(bullet.angle - 90, shootVelocity  , bullet.body.velocity);
+                this.game.physics.arcade.velocityFromAngle(bullet.angle - 90, shootVelocity, bullet.body.velocity);
                 //bullet.body.moveForward(shootVelocity);
                 //bullet.body.angularVelocity = shootVelocity;
                 //bullet.body.velocity = shootVelocity;                 
-                 
+
                 this.bullets.add(bullet);
             }
             //detecta cuando un disparo da en un enemigo
@@ -251,24 +256,6 @@ var SimpleGame = (function () {
     };
     return SimpleGame;
 }());
-function loadStart() {
-    createText("Loading ...");
-}
-//This callback is sent the following parameters:
-function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-    createText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
-    //this.phaser.game.text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
-}
-function loadComplete() {
-    createText("Load Complete");
-}
-function addSprite() {
-    if (button) {
-        button.kill();
-    }
-    button = phaser.game.add.button(phaser.game.width - 300, phaser.game.height - 300, 'button', actionOnClick, this, 0, 0, 1);
-    button.fixedToCamera = true;
-}
 
 //efecto humo en la nave (muy lento)
 var smoke = false;
@@ -341,7 +328,7 @@ if (isPhoneGap()) {
     }
 } else {
     window.onload = function () {
-       // alert("windows");
+        // alert("windows");
         phaser = new SimpleGame();
     };
 }
