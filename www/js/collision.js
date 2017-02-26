@@ -31,4 +31,5 @@ function explosionCreate(x, y, scale) {
     explosion.alpha = 0.8;
     explosion.play('kaboom', 25, false, true);
     explosion.lifespan = 2000;
+    parent.explosion.play();
 };

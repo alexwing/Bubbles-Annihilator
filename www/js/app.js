@@ -65,8 +65,10 @@ var SimpleGame = (function () {
         button.onInputUp.add(parent.screenButtonUp, this);
 
 
-        // this.game.stage.backgroundColor = '#182d3b';
-
+        //sounds
+        explosion = this.game.add.audio('explosion');
+        blaster = this.game.add.audio('blaster');
+        blaster.volume = 0.1;
 
     };
     SimpleGame.prototype.update = function () {
@@ -196,6 +198,7 @@ var SimpleGame = (function () {
                 //bullet.body.moveForward(shootVelocity);
                 //bullet.body.angularVelocity = shootVelocity;
                 //bullet.body.velocity = shootVelocity;
+                
 
                 var bullet = bulletAnimations.getFirstExists(false);
 
@@ -215,6 +218,8 @@ var SimpleGame = (function () {
                 //bullet.body.velocity = shootVelocity;                 
 
                 this.bullets.add(bullet);
+               
+                blaster.play();
             }
             //detecta cuando un disparo da en un enemigo
             this.game.physics.arcade.overlap(this.bullets, balls, collisionHandler, null, this);
