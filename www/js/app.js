@@ -1,7 +1,7 @@
 var SimpleGame = (function () {
     function SimpleGame() {
         //creamos el juego ocupando el tamaño que tengamos disponible en el navegador
-        this.game = new parent.Phaser.Game("100%", "100%", Phaser.AUTO, 'content', {preload: this.preload, create: this.create, update: this.update, render: this.render});
+        this.game = new parent.Phaser.Game("100%", "100%", parent.Phaser.AUTO, 'content', {preload: this.preload, create: this.create, update: this.update, render: this.render});
 
     }
     SimpleGame.prototype.preload = function () {
@@ -59,11 +59,10 @@ var SimpleGame = (function () {
         this.bullets.physicsBodyType = parent.Phaser.Physics.ARCADE;
         levelCreator();
         updateLives();
-        button = this.game.add.button(this.game.width - 150, this.game.height - 150, 'button', actionOnClick, this, 0, 0, 1);
+        button = this.game.add.button(this.game.width - 150, this.game.height - 150, 'button', null, this, 0, 0, 1);
         button.fixedToCamera = true;
-
-        button.onInputDown.add(down, this);
-        button.onInputUp.add(up, this);
+        button.onInputDown.add(parent.screenButtonDown, this);
+        button.onInputUp.add(parent.screenButtonUp, this);
 
 
         // this.game.stage.backgroundColor = '#182d3b';
@@ -79,9 +78,9 @@ var SimpleGame = (function () {
 
         player.body.velocity.x = easeInSpeed(player.body.velocity.x);
         player.body.velocity.y = easeInSpeed(player.body.velocity.y);
-        //sthis.player.body.rotation = 0;
+
         var speed = this.game.touchControl.speed;
-        //var delay = 0;
+
         var angle = 0;
         if (speed.x !== 0 || speed.y !== 0) {
             angle = this.game.touchControl.body.rotation;
@@ -239,21 +238,7 @@ var SimpleGame = (function () {
         // this.game.debug.spriteCoords(player, 32, 32);
         //this.game.debug.physicsBody(player.body);
     };
-    SimpleGame.prototype.explosionCreate = function (x, y, scale) {
-        //  An explosion pool
-        var explosions;
-        explosions = this.game.add.group();
-        explosions.createMultiple(1, 'kaboom');
-        explosions.forEach(setupExplosions, this);
-        var explosion = explosions.getFirstExists(false);
-        explosion.reset(x, y);
-        explosion.scale.x = explosion.scale.y = scale * 2;
-        explosion.anchor.x = 0.5;
-        explosion.anchor.y = 0.5;
-        explosion.alpha = 0.8;
-        explosion.play('kaboom', 25, false, true);
-        explosion.lifespan = 2000;
-    };
+
     return SimpleGame;
 }());
 

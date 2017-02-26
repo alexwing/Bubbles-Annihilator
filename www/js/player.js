@@ -16,7 +16,7 @@ function createPlayer() {
 }
 function playerDeath(player, bubble) {
     parent.hits++;
-    parent.phaser.explosionCreate(player.body.x + (player.body.width / 2), player.body.y + (player.body.height / 2), player.scale.x);
+    parent.explosionCreate(player.body.x + (player.body.width / 2), player.body.y + (player.body.height / 2), player.scale.x);
     bubble.kill();
     parent.lives--;
     updateLives();
@@ -30,18 +30,12 @@ function playerDeath(player, bubble) {
 var easeInSpeed = function (x) {
     return x - x / 6;
 };
-//player fire button
-function down() {
-   // fireButton = !fireButton;
-     fireButton = true;
 
+
+//player screeen fire button
+function screenButtonDown() {
+     fireButton = true;
 }
-function up() {
+function screenButtonUp() {
     fireButton = false;
-}
-//screeen firebutton
-function actionOnClick() {
-    //fireButton = !fireButton;
-    //this.game.debug.text("Pulsado", 100, 120);
-     //fireButton = true;
 }
