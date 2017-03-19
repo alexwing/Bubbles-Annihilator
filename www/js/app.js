@@ -89,9 +89,14 @@ var SimpleGame = (function () {
     x = w.innerWidth || e.clientWidth || g.clientWidth,
     y = w.innerHeight|| e.clientHeight|| g.clientHeight;
     
-    this.game.debug.text(x + ' × ' + y, 100, 120);
-    
-    parent.phaser.game.scale.setGameSize(x, y);
+    if (screenResX!==x | screenResY!==y){
+       screenResX = x;
+       screenResY = y;
+       this.game.debug.text(screenResX + ' × ' + screenResX, 100, 120);     
+       parent.phaser.game.scale.setGameSize(screenResX, screenResY);
+    } 
+
+
         var factorDificultad = (300 + (dificultad * 100));
         bola.body.velocity.y = (acelometroY * factorDificultad);
         bola.body.velocity.x = (acelometroX * (-1 * factorDificultad));
@@ -276,6 +281,8 @@ var SimpleGame = (function () {
 var smoke = false;
 var smokeEmitter = null;
 
+var screenResX = 0;
+var screenResY = 0;
 //app
 var phaser;
 
