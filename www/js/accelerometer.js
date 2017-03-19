@@ -3,8 +3,8 @@ function watchAccelerometer() {
         console.log('onError!');
     }
     function onSuccess(datosAceleracion) {
-        acelometroX = datosAceleracion.x;
-        acelometroY = datosAceleracion.y;
+        parent.acelometroX = datosAceleracion.x;
+        parent.acelometroY = datosAceleracion.y;
     }
     navigator.accelerometer.watchAcceleration(onSuccess, onError, {frequency: 10});
 }

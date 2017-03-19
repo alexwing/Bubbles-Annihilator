@@ -1,5 +1,7 @@
 var SimpleGame = (function () {
     function SimpleGame() {
+        
+   
         //creamos el juego ocupando el tamaño que tengamos disponible en el navegador
         this.game = new parent.Phaser.Game("100%", "100%", parent.Phaser.AUTO, 'content', {preload: this.preload, create: this.create, update: this.update, render: this.render});
 
@@ -41,9 +43,14 @@ var SimpleGame = (function () {
             smokeEmitter = this.game.add.emitter(0, 0, 400);
             smokeEmitter.width = 10;
             smokeEmitter.makeParticles('smoke');
-            smokeEmitter.setAlpha(1, 0.01, 800);
+            //setAlpha(min, max, rate, ease, yoyo)
+            smokeEmitter.gravity = 0;
+            smokeEmitter.setAlpha(1, 0, 3000);
+            //setScale(minX, maxX, minY, maxY, rate, ease, yoyo)
             smokeEmitter.setScale(0.05, 0.4, 0.05, 0.4, 2000, parent.Phaser.Easing.Quintic.Out);
             smokeEmitter.start(false, 5000, 10);
+            //start(explode, lifespan, frequency, quantity, forceQuantity)
+            smokeEmitter.start(false, 2000,100, -1);
         }
 
         parent.createPlayer();
@@ -233,9 +240,15 @@ var SimpleGame = (function () {
         if (parent.smoke === true) {
             smokeEmitter.x = player.x;
             smokeEmitter.y = player.y;
-            smokeEmitter.setXSpeed(player.body.velocity.x, -player.body.velocity.x);
-            smokeEmitter.setYSpeed(player.body.velocity.y, -player.body.velocity.y);
-            smokeEmitter.setRotation(player.rotation, player.rotation);
+           // smokeEmitter.setXSpeed(player.body.velocity.x, player.body.velocity.x);
+           // smokeEmitter.setYSpeed(player.body.velocity.y, player.body.velocity.y);
+           // smokeEmitter.setRotation(player.rotation, player.rotation);
+            if (player.body.velocity.x !==0){
+             smokeEmitter.visible= true;
+            }else{
+                smokeEmitter.visible = false;
+            }
+            
         }
     };
     SimpleGame.prototype.render = function () {
@@ -248,7 +261,7 @@ var SimpleGame = (function () {
 }());
 
 //efecto humo en la nave (muy lento)
-var smoke = false;
+var smoke = true;
 var smokeEmitter = null;
 
 //app
@@ -312,8 +325,8 @@ if (isPhoneGap()) {
     if ('addEventListener' in document) {
         //alert("phonegap");
         document.addEventListener('deviceready', function () {
-            phaser = new SimpleGame();
             watchAccelerometer();
+            phaser = new SimpleGame();          
         }, false);
     }
 } else {
