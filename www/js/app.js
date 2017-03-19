@@ -261,7 +261,7 @@ var SimpleGame = (function () {
 }());
 
 //efecto humo en la nave (muy lento)
-var smoke = true;
+var smoke = false;
 var smokeEmitter = null;
 
 //app
@@ -325,7 +325,7 @@ if (isPhoneGap()) {
     if ('addEventListener' in document) {
         //alert("phonegap");
         document.addEventListener('deviceready', function () {
-            watchAccelerometer();
+            //watchAccelerometer();
             phaser = new SimpleGame();          
         }, false);
     }
