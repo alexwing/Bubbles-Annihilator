@@ -1,7 +1,6 @@
 var SimpleGame = (function () {
     function SimpleGame() {
-
-     
+   
    
         //creamos el juego ocupando el tamaño que tengamos disponible en el navegador
         this.game = new parent.Phaser.Game("100%", "100%", parent.Phaser.AUTO, 'content', {preload: this.preload, create: this.create, update: this.update, render: this.render});
