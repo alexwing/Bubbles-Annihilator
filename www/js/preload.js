@@ -29,4 +29,6 @@ function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 }
 function loadComplete() {
     createText("Load Complete");
+    //parent.phaser.game.scale.setGameSize(window.screen.width * window.devicePixelRatio, window.screen.height * window.devicePixelRatio);
+    parent.phaser.game.scale.setGameSize(window.screen.width, window.screen.height);
 }
