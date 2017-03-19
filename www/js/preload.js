@@ -29,18 +29,18 @@ function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 }
 function loadComplete() {
     createText("Load Complete");
-     parent.phaser.game.scale.startFullScreen(false);
-  //  var windowWidth = window.innerWidth;
-//var windowHeight = window.innerHeight;
-//var pixelRatio = window.devicePixelRatio || 1; /// get pixel ratio of device
-//
-//canvasMain = document.getElementById("phaser");
-//
-//canvasMain.width = windowWidth * pixelRatio;   /// resolution of canvas
-//canvasMain.height = windowHeight * pixelRatio;
+    parent.phaser.game.scale.startFullScreen(false);
+    //  var windowWidth = window.innerWidth;
+    //var windowHeight = window.innerHeight;
+    //var pixelRatio = window.devicePixelRatio || 1; /// get pixel ratio of device
+    //
+    //canvasMain = document.getElementById("phaser");
+    //
+    //canvasMain.width = windowWidth * pixelRatio;   /// resolution of canvas
+    //canvasMain.height = windowHeight * pixelRatio;
 
-//canvasMain.style.width = windowWidth + 'px';   /// CSS size of canvas
-//canvasMain.style.height = windowHeight +  'px';   
+    //canvasMain.style.width = windowWidth + 'px';   /// CSS size of canvas
+    //canvasMain.style.height = windowHeight +  'px';   
     //parent.phaser.game.scale.setGameSize(window.screen.width * window.devicePixelRatio, window.screen.height * window.devicePixelRatio);
     //parent.phaser.game.scale.setGameSize(window.screen.width * window.devicePixelRatio, window.screen.height * window.devicePixelRatio);
 }

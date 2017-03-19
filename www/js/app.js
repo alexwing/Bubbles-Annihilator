@@ -80,6 +80,18 @@ var SimpleGame = (function () {
     };
     SimpleGame.prototype.update = function () {
 
+   // this.game.debug.inputInfo(32, 432);
+   
+   var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth,
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    
+    this.game.debug.text(x + ' × ' + y, 100, 120);
+    
+    parent.phaser.game.scale.setGameSize(x, y);
         var factorDificultad = (300 + (dificultad * 100));
         bola.body.velocity.y = (acelometroY * factorDificultad);
         bola.body.velocity.x = (acelometroX * (-1 * factorDificultad));
