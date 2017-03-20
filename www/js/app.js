@@ -93,7 +93,7 @@ var SimpleGame = (function () {
         }
 
 
-        this.game.debug.text(x + ' × ' + y, 100, 120);
+        //this.game.debug.text(x + ' × ' + y, 100, 120);
 
         var factorDificultad = (300 + (dificultad * 100));
         bola.body.velocity.y = (acelometroY * factorDificultad);

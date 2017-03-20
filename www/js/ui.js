@@ -59,12 +59,12 @@ function isPhoneGap() {
 }
 
 function createButton() {
-    if (button){
-        button.destroy();
+    if (parent.button){
+        parent.button.destroy();
     }
-    button = this.phaser.game.add.button(this.phaser.game.width - 150, this.phaser.game.height - 150, 'button', null, this, 0, 0, 1);
-    button.fixedToCamera = true;
-    button.onInputDown.add(parent.screenButtonDown, this);
-    button.onInputUp.add(parent.screenButtonUp, this);
+    parent.button = this.phaser.game.add.button(this.phaser.game.width - 150, this.phaser.game.height - 150, 'button', null, this, 0, 0, 1);
+    parent.button.fixedToCamera = true;
+    parent.button.onInputDown.add(parent.screenButtonDown, this);
+    parent.button.onInputUp.add(parent.screenButtonUp, this);
 
 }
