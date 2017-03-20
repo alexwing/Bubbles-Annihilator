@@ -53,7 +53,18 @@ function updateLives() {
 }
 
 function isPhoneGap() {
-    return (window.cordova || window.PhoneGap || window.phonegap) 
-    && /^file:\/{3}[^\/]/i.test(window.location.href) 
-    && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+    return (window.cordova || window.PhoneGap || window.phonegap)
+            && /^file:\/{3}[^\/]/i.test(window.location.href)
+            && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+}
+
+function createButton() {
+    if (button){
+        button.destroy();
+    }
+    button = this.phaser.game.add.button(this.phaser.game.width - 150, this.phaser.game.height - 150, 'button', null, this, 0, 0, 1);
+    button.fixedToCamera = true;
+    button.onInputDown.add(parent.screenButtonDown, this);
+    button.onInputUp.add(parent.screenButtonUp, this);
+
 }

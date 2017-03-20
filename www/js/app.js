@@ -1,7 +1,7 @@
 var SimpleGame = (function () {
     function SimpleGame() {
-   
-   
+
+
         //creamos el juego ocupando el tamaño que tengamos disponible en el navegador
         this.game = new parent.Phaser.Game("100%", "100%", parent.Phaser.AUTO, 'content', {preload: this.preload, create: this.create, update: this.update, render: this.render});
 
@@ -50,7 +50,7 @@ var SimpleGame = (function () {
             smokeEmitter.setScale(0.05, 0.4, 0.05, 0.4, 2000, parent.Phaser.Easing.Quintic.Out);
             smokeEmitter.start(false, 5000, 10);
             //start(explode, lifespan, frequency, quantity, forceQuantity)
-            smokeEmitter.start(false, 2000,100, -1);
+            smokeEmitter.start(false, 2000, 100, -1);
         }
 
         parent.createPlayer();
@@ -66,11 +66,7 @@ var SimpleGame = (function () {
         this.bullets.physicsBodyType = parent.Phaser.Physics.ARCADE;
         levelCreator();
         updateLives();
-        button = this.game.add.button(this.game.width - 150, this.game.height - 150, 'button', null, this, 0, 0, 1);
-        button.fixedToCamera = true;
-        button.onInputDown.add(parent.screenButtonDown, this);
-        button.onInputUp.add(parent.screenButtonUp, this);
-
+        createButton();
 
         //sounds
         explosion = this.game.add.audio('explosion');
@@ -80,22 +76,24 @@ var SimpleGame = (function () {
     };
     SimpleGame.prototype.update = function () {
 
-   // this.game.debug.inputInfo(32, 432);
-   
-   var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    x = w.innerWidth || e.clientWidth || g.clientWidth,
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-    
-    if (screenResX!==x | screenResY!==y){
-       screenResX = x;
-       screenResY = y;
-       this.game.debug.text(screenResX + ' × ' + screenResX, 100, 120);     
-       parent.phaser.game.scale.setGameSize(screenResX, screenResY);
-    } 
+        // this.game.debug.inputInfo(32, 432);
 
+        var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+        if (screenResX !== x | screenResY !== y) {
+            screenResX = x;
+            screenResY = y;
+            parent.phaser.game.scale.setGameSize(screenResX, screenResY);
+            createButton();
+        }
+
+
+        this.game.debug.text(x + ' × ' + y, 100, 120);
 
         var factorDificultad = (300 + (dificultad * 100));
         bola.body.velocity.y = (acelometroY * factorDificultad);
@@ -222,7 +220,7 @@ var SimpleGame = (function () {
                 //bullet.body.moveForward(shootVelocity);
                 //bullet.body.angularVelocity = shootVelocity;
                 //bullet.body.velocity = shootVelocity;
-                
+
 
                 var bullet = bulletAnimations.getFirstExists(false);
 
@@ -242,7 +240,7 @@ var SimpleGame = (function () {
                 //bullet.body.velocity = shootVelocity;                 
 
                 this.bullets.add(bullet);
-               
+
                 blaster.play();
             }
             //detecta cuando un disparo da en un enemigo
@@ -257,15 +255,15 @@ var SimpleGame = (function () {
         if (parent.smoke === true) {
             smokeEmitter.x = player.x;
             smokeEmitter.y = player.y;
-           // smokeEmitter.setXSpeed(player.body.velocity.x, player.body.velocity.x);
-           // smokeEmitter.setYSpeed(player.body.velocity.y, player.body.velocity.y);
-           // smokeEmitter.setRotation(player.rotation, player.rotation);
-            if (player.body.velocity.x !==0){
-             smokeEmitter.visible= true;
-            }else{
+            // smokeEmitter.setXSpeed(player.body.velocity.x, player.body.velocity.x);
+            // smokeEmitter.setYSpeed(player.body.velocity.y, player.body.velocity.y);
+            // smokeEmitter.setRotation(player.rotation, player.rotation);
+            if (player.body.velocity.x !== 0) {
+                smokeEmitter.visible = true;
+            } else {
                 smokeEmitter.visible = false;
             }
-            
+
         }
     };
     SimpleGame.prototype.render = function () {
@@ -344,8 +342,8 @@ if (isPhoneGap()) {
     if ('addEventListener' in document) {
         //alert("phonegap");
         document.addEventListener('deviceready', function () {
-            //watchAccelerometer();
-            phaser = new SimpleGame();          
+            watchAccelerometer();
+            phaser = new SimpleGame();
         }, false);
     }
 } else {
