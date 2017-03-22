@@ -340,7 +340,7 @@ if (isPhoneGap()) {
         document.addEventListener('deviceready', function () {
             watchAccelerometer();
             phaser = new SimpleGame();
-            window.addEventListener("orientationchange", function () {
+            document.addEventListener("orientationchange", function () {
                 parent.fullscreenClass.resize(phaser);
             });
         }, false);
