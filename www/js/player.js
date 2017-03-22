@@ -26,7 +26,7 @@ function playerDeath(player, bubble) {
     tween.repeat(10, 100);
     evalueLevel();
 }
-
+//player desaceleration
 var easeInSpeed = function (x) {
     return x - x / 6;
 };

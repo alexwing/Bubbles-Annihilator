@@ -78,20 +78,16 @@ var SimpleGame = (function () {
 
         // this.game.debug.inputInfo(32, 432);
 
-        var w = window,
-                d = document,
-                e = d.documentElement,
-                g = d.getElementsByTagName('body')[0],
-                x = w.innerWidth || e.clientWidth || g.clientWidth,
-                y = w.innerHeight || e.clientHeight || g.clientHeight;
 
-        if (screenResX !== x | screenResY !== y) {
-            screenResX = x;
-            screenResY = y;
-            parent.phaser.game.scale.setGameSize(screenResX, screenResY);
-            createButton();
-        }
-
+        /*var resolution = parent.fullscreenClass.check(); 
+         
+         if (screenResX !== resolution.x | screenResY !== resolution.y) {
+         screenResX = resolution.x;
+         screenResY = resolution.y;
+         parent.phaser.game.scale.setGameSize(screenResX, screenResY);
+         createButton();
+         } 
+         */
 
         //this.game.debug.text(x + ' × ' + y, 100, 120);
 
@@ -350,8 +346,15 @@ if (isPhoneGap()) {
     window.onload = function () {
         // alert("windows");
         phaser = new SimpleGame();
+
+
+
     };
 }
 
-//# sourceMappingURL=app.js.map 
-//# sourceMappingURL=app.js.map
+window.addEventListener("resize", function () {
+    parent.fullscreenClass.resize(phaser);
+});
+window.addEventListener("orientationchange", function () {
+    parent.fullscreenClass.resize(phaser);
+});
