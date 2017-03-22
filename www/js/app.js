@@ -340,21 +340,20 @@ if (isPhoneGap()) {
         document.addEventListener('deviceready', function () {
             watchAccelerometer();
             phaser = new SimpleGame();
+            window.addEventListener("orientationchange", function () {
+                parent.fullscreenClass.resize(phaser);
+            });
         }, false);
     }
 } else {
     window.onload = function () {
         // alert("windows");
         phaser = new SimpleGame();
-
+        window.addEventListener("resize", function () {
+            parent.fullscreenClass.resize(phaser);
+        });
 
 
     };
 }
 
-window.addEventListener("resize", function () {
-    parent.fullscreenClass.resize(phaser);
-});
-window.addEventListener("orientationchange", function () {
-    parent.fullscreenClass.resize(phaser);
-});
