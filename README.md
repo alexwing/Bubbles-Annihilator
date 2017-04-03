@@ -2,7 +2,6 @@
 
 Game ships with the Phaser HTML5 javascript library.
 
-Code on GitHub	
 Change log
 
 1.1a Migrate to PhoneGap to export Android APK.
