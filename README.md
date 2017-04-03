@@ -1,16 +1,19 @@
 #Bubbles-Annihilator
-Una nave tendrá que disparar a las burbujas que van apareciendo.
+Game ships with the Phaser HTML5 javascript library.
 
-##Features
-Multitouch controls, cursos and XBOX controller
+Code on GitHub	
+Change log
 
-## Mobile
+1.1a Migrate to PhoneGap to export Android APK.
+Controls
 
-Get the PhoneGap Desktop
+Cursors – Move
 
-### Desktop
+Ctrl – Shoot
+In Mobile
 
-In your browser, open the file:
+Touch screen – Move
 
-    /www/index.html
+Red button – Shoot
 
+Acelerometter – Move the “Death Star”
