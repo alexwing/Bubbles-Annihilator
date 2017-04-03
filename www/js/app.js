@@ -17,6 +17,7 @@ var SimpleGame = (function () {
     };
     SimpleGame.prototype.create = function () {
 
+        parent.fullscreenClass.start(this.game); 
 
         // fireButton = true;
         this.game.touchControl = this.game.plugins.add(parent.Phaser.Plugin.TouchControl);
@@ -79,15 +80,14 @@ var SimpleGame = (function () {
         // this.game.debug.inputInfo(32, 432);
 
 
-        /*var resolution = parent.fullscreenClass.check(); 
-         
-         if (screenResX !== resolution.x | screenResY !== resolution.y) {
-         screenResX = resolution.x;
-         screenResY = resolution.y;
-         parent.phaser.game.scale.setGameSize(screenResX, screenResY);
-         createButton();
-         } 
-         */
+        var resolution = parent.fullscreenClass.check();
+
+        if (screenResX !== resolution.x | screenResY !== resolution.y) {
+            screenResX = resolution.x;
+            screenResY = resolution.y;
+            parent.fullscreenClass.resize(parent.phaser, screenResX, screenResY);
+        }
+
 
         //this.game.debug.text(x + ' × ' + y, 100, 120);
 
@@ -340,20 +340,23 @@ if (isPhoneGap()) {
         document.addEventListener('deviceready', function () {
             watchAccelerometer();
             phaser = new SimpleGame();
-            document.addEventListener("orientationchange", function () {
-                parent.fullscreenClass.resize(phaser);
-            });
+            // document.addEventListener("orientationchange", function () {
+            //          var resolution = parent.fullscreenClass.check(); 
+            //      parent.fullscreenClass.resize(phaser,resolution.x, resolution.y);
+            //  });
         }, false);
     }
 } else {
     window.onload = function () {
         // alert("windows");
         phaser = new SimpleGame();
-        window.addEventListener("resize", function () {
-            parent.fullscreenClass.resize(phaser);
-        });
+        //  window.addEventListener("resize", function () {
+        //          var resolution = parent.fullscreenClass.check(); 
+        //      parent.fullscreenClass.resize(phaser,resolution.x, resolution.y);
+        //  });
 
 
     };
+  
 }
 

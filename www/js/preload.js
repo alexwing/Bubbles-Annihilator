@@ -30,6 +30,15 @@ function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 function loadComplete() {
     createText("Load Complete");
     parent.phaser.game.scale.startFullScreen(false);
+
+    var resolution = parent.fullscreenClass.check();
+
+    if (screenResX !== resolution.x | screenResY !== resolution.y) {
+        screenResX = resolution.x;
+        screenResY = resolution.y;
+        parent.fullscreenClass.resize(parent.phaser, screenResX, screenResY);
+    }
+
     //  var windowWidth = window.innerWidth;
     //var windowHeight = window.innerHeight;
     //var pixelRatio = window.devicePixelRatio || 1; /// get pixel ratio of device
