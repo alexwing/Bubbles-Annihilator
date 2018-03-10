@@ -13,5 +13,11 @@
     "phonegap:template"
   ],
   "author": "Devscola",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-device-orientation": {},
+      "cordova-plugin-device-motion": {}
+    }
+  }
 }

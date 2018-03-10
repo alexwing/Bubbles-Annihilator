@@ -31,8 +31,8 @@ function loadComplete() {
     createText("Load Complete");
     parent.phaser.game.scale.startFullScreen(false);
 
-    var resolution = parent.fullscreenClass.check();
-    parent.fullscreenClass.resize(parent.phaser, resolution.x,  resolution.y);
+  //  var resolution = parent.fullscreenClass.check();
+  //  parent.fullscreenClass.resize(parent.phaser, resolution.x,  resolution.y);
 
     //  var windowWidth = window.innerWidth;
     //var windowHeight = window.innerHeight;
