@@ -2,7 +2,6 @@
 <widget id="com.phonegap.alexwing" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Bubbles Annihilator</name>
     <preference name="Fullscreen" value="true" />
-   <!-- <preference name="orientation" value="portrait" />-->
     <preference name="android-manifest/application/activity/@android:theme" value="@android:style/Theme.NoTitleBar.Fullscreen" />
     <description>
         Bubbles Annihilator Game.
@@ -13,7 +12,6 @@
     <icon src="res/nave1.png" />
     <content src="index.html" />
     <access origin="*" />
-    <plugin name="cordova-plugin-device-motion" spec="~1.2.3" />
     <plugin name="cordova-plugin-device-orientation" spec="~1.0.5" />
+    <plugin name="cordova-plugin-device-motion" spec="~1.2.2" />
 </widget>
-	
