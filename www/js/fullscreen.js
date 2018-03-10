@@ -19,7 +19,10 @@ var fullscreenClass = {
                 g = d.getElementsByTagName('body')[0],
                 x = w.innerWidth || e.clientWidth || g.clientWidth,
                 y = w.innerHeight || e.clientHeight || g.clientHeight;*/
-        phaser.game.scale.setGameSize(x, y);
+        
+        //por alguna razon tengo que sumarle 4 pixels para que funcione en el samsung s7
+        phaser.game.scale.setGameSize(x+3, y+3);
+        //alert("x"+x+"y"+y);
 
         createButton();
     },start: function (phaser) {
