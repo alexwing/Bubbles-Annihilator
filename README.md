@@ -17,3 +17,8 @@ Touch screen – Move
 Red button – Shoot
 
 Acelerometter – Move the “Death Star”
+
+
+##Test example
+
+https://aaranda.es/code/bubbles/gameDave/
